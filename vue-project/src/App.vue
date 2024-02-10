@@ -6,7 +6,7 @@
       <button @click="toggleAnswer = !toggleAnswer">{{!toggleAnswer ? 'Hide complited' : 'Show all'}}</button>
 
       <form v-if="toggleAddTodo" @submit.prevent="addTodo">
-        <input v-model="newTodo" placeholder="pishi">
+        <input v-model="newTodo">
         <button>Add todo</button>
       </form>
 
@@ -18,30 +18,16 @@
         </label>
         <button @click="deleteTodo(todo)">X</button>
       </section>
-      <!-- <TodoItem
-          v-for="todo in filtredTodos" 
-          :todo="todo"
-          :todos="todos"
-          :key="todo.id"
-          ></TodoItem> -->
-
-
     </div>
-    <TodoItem>Some text</TodoItem>
   </body>
 </template>
 
 
 
 <script>
-import todoItem from './components/todoItem.vue';
 let id = 0;
 export default {
-  components: {
-    todoItem,
-
-},
-  data() {
+      data() {
     return {
       toggleAddTodo: false,
       toggleAnswer: false,
@@ -90,6 +76,7 @@ button {
   padding: 0.3em;
   font-size: 1.5em;
   cursor: pointer;
+  border-radius: 15px;
 }
 
 .container {
@@ -97,6 +84,7 @@ button {
   margin-top: 20%;
   text-align: center;
   background: rgba(89, 255, 63, 0.2);
+  border-radius: 15px;
 }
 
 .container>h1 {
@@ -157,7 +145,16 @@ form {
 form>input {
   padding: 0.5em;
   display: inline-block;
+  border: 0; 
+  border-right: 1px solid black;
+  border-radius: 15px 0 0 15px;
+  outline: none;
+}
 
+form button {
+  border-radius: 0 15px 15px 0;
+  background: #fff;
+  border: 0;
 }
 
 .done {
